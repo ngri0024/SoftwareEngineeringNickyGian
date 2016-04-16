@@ -28,7 +28,7 @@ public class CatalogueTest {
         book3=new Book(3000000, "Ron Potter 3", "J. K. Rowling", "Fiction",
                 "This book is about a wizard", -1, 0, 2000);
         book4=new Book(4000000, "Spongebob book", "Squares", "Comedy",
-                "This book is funny", -1, 0, 2000);
+                "This book is funny", -1, 0, 2004);
         titleBooks= new ArrayList<Book>();
     }
 
@@ -116,5 +116,21 @@ public class CatalogueTest {
 
     }
 
+    @Test
+    public void searchYopTest() throws Exception {//tests for case sensitivity
+        titleBooks.add(book1);
+        titleBooks.add(book2);
+        titleBooks.add(book3);
+
+
+        assertEquals("Book was not added", true, catalogue.addBook(book1));
+        assertEquals("Book was not added", true, catalogue.addBook(book2));
+        assertEquals("Book was not added", true, catalogue.addBook(book3));
+        assertEquals("Book was not added", true, catalogue.addBook(book4));
+
+        assertEquals("List length not match.", titleBooks,
+                catalogue.searchByYearOfPublication(2000));
+
+    }
 
 }

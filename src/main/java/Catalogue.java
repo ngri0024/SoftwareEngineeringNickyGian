@@ -45,6 +45,16 @@ public class Catalogue {
         return genreBooks;
     }
 
+    public List<Book>  searchByYearOfPublication(int yop){
+        List<Book> yopBooks= new ArrayList<Book>();
+        for (Book b : books) {
+            if (b.getYearPublished()==yop){
+                yopBooks.add(b);
+            }
+        }
+        return yopBooks;
+    }
+
 
 
 }
