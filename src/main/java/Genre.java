@@ -11,26 +11,24 @@ public class Genre {
         return name;
     }
 
-    public void setName(String name){
-        if(name.length() >0) {
-            this.name = name;
+    public boolean setName(String name){
+        if(name.equals("")) {
+            return false;
         }
-        else{
-            System.out.println("Name not set");
-        }
+        this.name=name;
+        return true;
     }
 
     public String getDescription(){
         return description;
     }
 
-    public void setDescription(String description){
-        if(description.length()>0) {
-            this.description = description;
+    public boolean setDescription(String description){
+        if(description.equals("")) {
+            return false;
         }
-        else{
-            System.out.println("Description not set");
-        }
+        this.description=description;
+        return true;
     }
 
     public boolean compare(Genre g){
