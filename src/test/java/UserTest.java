@@ -31,7 +31,7 @@ public class UserTest {
 
     @Test
     public void removeBooksLoaned() throws Exception {//no books are present, therefore this should return false
-        assertEquals("Book was not removed because it was not in the list", false, user.removeBooksLoaned(book));
+        assertEquals("Book was not removed because it was not in the list", true, user.removeBooksLoaned(book));
     }
 
 }
