@@ -1,9 +1,7 @@
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by Nicky on 4/16/2016.
- */
+
 public class Catalogue {
     private List<Book> books;
 

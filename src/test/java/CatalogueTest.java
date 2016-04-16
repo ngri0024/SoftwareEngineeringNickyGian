@@ -55,7 +55,20 @@ public class CatalogueTest {
     }
 
     @Test
-    public void searchTitleTest() throws Exception {//a book is added, another book is added both retun true
+    public void getAllBooksTest() throws Exception {//this is for a getter so not really useful
+        titleBooks.add(book1);
+        titleBooks.add(book2);
+        titleBooks.add(book3);
+
+        assertEquals("Book was not added", true, catalogue.addBook(book1));
+        assertEquals("Book was not added", true, catalogue.addBook(book2));
+        assertEquals("Book was not added", true, catalogue.addBook(book3));
+
+        assertEquals("List length not match.", titleBooks, catalogue.getAllBooks());
+
+    }
+    @Test
+    public void searchSubTitleTest() throws Exception {//test for substring
         titleBooks.add(book1);
         titleBooks.add(book2);
 
@@ -64,8 +77,22 @@ public class CatalogueTest {
         assertEquals("Book was not added", true, catalogue.addBook(book3));
 
 
-        assertEquals("List length not match.", titleBooks, catalogue.searchByTitle("harry"));
+        assertEquals("List length not match.", titleBooks, catalogue.searchByTitle("Harry"));
+
+    }
+    @Test
+    public void searchCapTitleTest() throws Exception {//tests for case sensitivity
+        titleBooks.add(book1);
+        titleBooks.add(book2);
+
+        assertEquals("Book was not added", true, catalogue.addBook(book1));
+        assertEquals("Book was not added", true, catalogue.addBook(book2));
+        assertEquals("Book was not added", true, catalogue.addBook(book3));
+
+
+        assertEquals("List length not match.", titleBooks, catalogue.searchByTitle("HaRrY"));
         
     }
+
 
 }
