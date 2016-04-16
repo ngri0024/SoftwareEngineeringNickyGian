@@ -24,13 +24,23 @@ public class GenreTest {
     }
 
     @Test
-    public void setNameTest() throws Exception {
+    public void setNameInvalidTest() throws Exception {
         assertEquals("Genre name could not be empty", false, fiction.setName(""));
     }
 
     @Test
-    public void setDescriptionTest() throws Exception {
-        assertEquals("Genre name changed", false, fiction.setDescription(""));
+    public void setNameValidTest() throws Exception {
+        assertEquals("Genre Name did not change", true, fiction.setName("Comedy"));
+    }
+
+    @Test
+    public void setDescriptionInvalidTest() throws Exception {
+        assertEquals("Description changed", false, fiction.setDescription(""));
+    }
+
+    @Test
+    public void setDescriptionValidTest() throws Exception {
+        assertEquals("Description did not change", true, fiction.setDescription("This is another Description"));
     }
 
     @Test
