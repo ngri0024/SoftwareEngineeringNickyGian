@@ -25,4 +25,18 @@ public class Catalogue {
     public List<Book> getAllBooks() {
         return books;
     }
+
+    public List<Book>  searchByTitle(String title){
+        title= title.toLowerCase();
+        List<Book> subTitle= new ArrayList<Book>();
+        for (Book b : books) {
+            if (b.getTitle().toLowerCase().contains(title)){
+                subTitle.add(b);
+            }
+        }
+        return subTitle;
+    }
+
+
+
 }
