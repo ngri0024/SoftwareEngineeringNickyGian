@@ -35,6 +35,16 @@ public class Catalogue {
         return subTitle;
     }
 
+    public List<Book>  searchByGenre(Genre genre){
+        List<Book> genreBooks= new ArrayList<Book>();
+        for (Book b : books) {
+            if (b.getGenre().compare(genre)){
+                genreBooks.add(b);
+            }
+        }
+        return genreBooks;
+    }
+
 
 
 }
