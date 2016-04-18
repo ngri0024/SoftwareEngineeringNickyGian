@@ -69,9 +69,10 @@ public class CatalogueTest {
         assertEquals("Book was not added", true, catalogue.addBook(book2));
         assertEquals("Book was not added", true, catalogue.addBook(book3));
 
-        assertEquals("List length not match.", titleBooks, catalogue.getAllBooks());
+        assertEquals("Lists do not match", titleBooks, catalogue.getAllBooks());
 
     }
+
     @Test
     public void searchSubTitleTest() throws Exception {//test for substring
         titleBooks.add(book1);
@@ -82,7 +83,7 @@ public class CatalogueTest {
         assertEquals("Book was not added", true, catalogue.addBook(book3));
 
 
-        assertEquals("List length not match.", titleBooks, catalogue.searchByTitle("Harry"));
+        assertEquals("Lists do not match", titleBooks, catalogue.searchByTitle("Harry"));
 
     }
     @Test
@@ -95,7 +96,7 @@ public class CatalogueTest {
         assertEquals("Book was not added", true, catalogue.addBook(book3));
 
 
-        assertEquals("List length not match.", titleBooks, catalogue.searchByTitle("HaRrY"));
+        assertEquals("Lists do not match", titleBooks, catalogue.searchByTitle("HaRrY"));
         
     }
 
@@ -111,7 +112,7 @@ public class CatalogueTest {
         assertEquals("Book was not added", true, catalogue.addBook(book3));
         assertEquals("Book was not added", true, catalogue.addBook(book4));
 
-        assertEquals("List length not match.", titleBooks,
+        assertEquals("Lists do not match", titleBooks,
                 catalogue.searchByGenre(new Genre("Fiction", "This book is about a wizard")));
 
     }
@@ -128,7 +129,7 @@ public class CatalogueTest {
         assertEquals("Book was not added", true, catalogue.addBook(book3));
         assertEquals("Book was not added", true, catalogue.addBook(book4));
 
-        assertEquals("List length not match.", titleBooks,
+        assertEquals("Lists do not match", titleBooks,
                 catalogue.searchByYearOfPublication(2000));
 
     }
