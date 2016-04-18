@@ -44,8 +44,20 @@ public class LibraryTest {
     }
 
     @Test
-    public void addOneUserTest() throws Exception {
+    public void addOneUserTest() throws Exception {//a single User is added to the library
         assertEquals("User was not added", true, library.addUser(user1));
+    }
+
+    @Test
+    public void addDuplicateUserTest() throws Exception {//a user with the same ID cannot be added
+        assertEquals("User was not added", true, library.addUser(user1));
+        assertEquals("User with the same ID was added", false, library.addUser(user1));
+    }
+
+    @Test
+    public void addDifferentUserTest() throws Exception {//two users are added successfully
+        assertEquals("User was not added", true, library.addUser(user1));
+        assertEquals("User was not added", true, library.addUser(user2));
     }
 
 }
