@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -7,11 +8,11 @@ public class User {
     private String surname;
     private List<Book> booksLoaned;
 
-    public User(int ID, String name, String surname, List<Book> booksLoaned) {
+    public User(int ID, String name, String surname) {
         this.ID = ID;
         this.name = name;
         this.surname = surname;
-        this.booksLoaned = booksLoaned;
+        this.booksLoaned = new ArrayList<Book>();
     }
 
     public int getID() {

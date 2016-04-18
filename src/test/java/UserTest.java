@@ -15,7 +15,7 @@ public class UserTest {
     public void setUp() throws Exception {
         book = new Book(1000000, "Harry Potter", "J. K. Rowling", "Fiction",
                 "This book is about a wizard", -1, 0, 2000);
-        user = new User(5000000, "Nicky", "Griscti Soler", new ArrayList<Book>());
+        user = new User(5000000, "Nicky", "Griscti Soler");
     }
 
     @After
