@@ -5,6 +5,7 @@ import java.util.List;
 public class Library {
     private Catalogue catalogue;
     private List<User> users;
+    private final int loanDuration=28;
 
     public Library(){
         catalogue = new Catalogue();
@@ -24,6 +25,11 @@ public class Library {
 
     public boolean removeUser(User toRemove) {
         return users.remove(toRemove);
+    }
+
+    public boolean loanBookTo(Book toLoan, User user){
+
+
     }
 
 }
