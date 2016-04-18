@@ -57,8 +57,19 @@ public class UserTest {
     }
 
     @Test
-    public void removeBooksLoaned() throws Exception {//no books are present, therefore this should return false
+    public void removeEmptyBooksLoaned() throws Exception {//no books are present, therefore this should return false
         assertEquals("Book was not removed because it was not in the list", false, user.removeBooksLoaned(book));
     }
 
-}
+    @Test
+    public void removeValidBooksTest() throws Exception {//no books are present, therefore this should return false
+        assertEquals("Book was not added", true, user.addBooksLoaned(book));
+        assertEquals("Book was not removed", true, user.removeBooksLoaned(book));
+    }
+
+    @Test
+    public void removeInvalidBooksTest() throws Exception {//book to remove does not exist
+        assertEquals("Book was not added", true, user.addBooksLoaned(book));
+        assertEquals("Book was removed", false, user.removeBooksLoaned(book2));
+    }
+    }
