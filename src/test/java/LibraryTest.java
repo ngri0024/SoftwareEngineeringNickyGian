@@ -73,11 +73,4 @@ public class LibraryTest {
         assertEquals("User was not added", true, library.addUser(user1));
         assertEquals("User was not deleted", false, library.removeUser(user2));
     }
-
-    @Test
-    public void removeCorrectUserTest() throws Exception {
-        assertEquals("User was not added", true, library.addUser(user1));
-        assertEquals("User was not added", true, library.addUser(user2));
-        assertEquals("User was not deleted", true, library.removeUser(user2));
-    }
 }
