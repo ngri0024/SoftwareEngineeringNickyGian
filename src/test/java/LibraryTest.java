@@ -8,6 +8,8 @@ import static org.junit.Assert.*;
  * Created by Nicky on 4/18/2016.
  */
 public class LibraryTest {
+
+
     private User user1;
     private User user2;
     private Book book1;
@@ -60,4 +62,22 @@ public class LibraryTest {
         assertEquals("User was not added", true, library.addUser(user2));
     }
 
+    @Test
+    public void removeValidUserTest() throws Exception {
+        assertEquals("User was not added", true, library.addUser(user1));
+        assertEquals("User was not deleted", true, library.removeUser(user1));
+    }
+
+    @Test
+    public void removeInvalidUserTest() throws Exception {
+        assertEquals("User was not added", true, library.addUser(user1));
+        assertEquals("User was not deleted", false, library.removeUser(user2));
+    }
+
+    @Test
+    public void removeCorrectUserTest() throws Exception {
+        assertEquals("User was not added", true, library.addUser(user1));
+        assertEquals("User was not added", true, library.addUser(user2));
+        assertEquals("User was not deleted", true, library.removeUser(user2));
+    }
 }

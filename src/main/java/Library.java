@@ -22,5 +22,8 @@ public class Library {
         return true;
     }
 
+    public boolean removeUser(User toRemove) {
+        return users.remove(toRemove);
+    }
 
 }
