@@ -45,6 +45,11 @@ public class User {
 
     public boolean addBooksLoaned(Book newBook) {
         if(booksLoaned.size()<3){
+            for(Book book: booksLoaned){
+                if(book.getDaysLoaned()>28){
+                    return false;
+                }
+            }
             booksLoaned.add(newBook);
             newBook.setDaysLoaned(0);
             return true;

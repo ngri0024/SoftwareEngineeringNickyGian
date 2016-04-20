@@ -60,6 +60,14 @@ public class UserTest {
     }
 
     @Test
+    public void addOnOverdueLoaned() throws Exception {//4th books not added successfully
+        assertEquals("Book was not added", true, user.addBooksLoaned(book));
+        assertEquals("Book was not added", true, user.addBooksLoaned(book2));
+        book2.setDaysLoaned(30);
+        assertEquals("Book was added", false, user.addBooksLoaned(book3));
+    }
+
+    @Test
     public void removeEmptyBooksLoaned() throws Exception {//no books are present, therefore this should return false
         assertEquals("Book was not removed because it was not in the list", false, user.removeBooksLoaned(book));
     }
