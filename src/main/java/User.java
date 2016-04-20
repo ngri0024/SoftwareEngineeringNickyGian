@@ -46,13 +46,18 @@ public class User {
     public boolean addBooksLoaned(Book newBook) {
         if(booksLoaned.size()<3){
             booksLoaned.add(newBook);
+            newBook.setDaysLoaned(0);
             return true;
         }
         return false;//by default returns false
     }
 
     public boolean removeBooksLoaned(Book toRemove) {
-        return booksLoaned.remove(toRemove);
+       boolean removed=booksLoaned.remove(toRemove);
+        if(removed){
+            toRemove.setDaysLoaned(-1);
+        }
+        return removed;
     }//call reset method to reset days loaned also set isAvaliable to true
 
 }
