@@ -50,6 +50,7 @@ public class User {
                     return false;
                 }
             }
+            newBook.setCurrentUserID(ID);
             booksLoaned.add(newBook);
             newBook.setDaysLoaned(0);
             return true;
@@ -61,6 +62,7 @@ public class User {
        boolean removed=booksLoaned.remove(toRemove);
         if(removed){
             toRemove.setDaysLoaned(-1);
+            toRemove.setCurrentUserID(-1);
         }
         return removed;
     }//call reset method to reset days loaned also set isAvaliable to true

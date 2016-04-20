@@ -33,16 +33,27 @@ public class Library {
     }
 
     public boolean loanBookTo(Book toLoan, User user){
-        for(Book book:catalogue.getAllBooks()){
-            if (book.equals(toLoan)){
-                if(book.getDaysLoaned()==-1){//can be loaned
-                   return user.addBooksLoaned(toLoan);
-                }else{
-                    return false;
+        if(users.contains(user)) {
+            for (Book book : catalogue.getAllBooks()) {
+                if (book.equals(toLoan)) {
+                    if (book.getDaysLoaned() == -1) {//can be loaned
+                        return user.addBooksLoaned(toLoan);
+                    } else {
+                        return false;
+                    }
                 }
             }
         }
         return false;
     }
 
+    public boolean returnBook(Book toReturn) {
+        int userId = toReturn.getCurrentUserID();
+        for (User u : users) {
+            if (userId == u.getID()) {
+                return u.removeBooksLoaned(toReturn);
+            }
+        }
+    return false;
+    }
 }
