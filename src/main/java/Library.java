@@ -27,9 +27,9 @@ public class Library {
         return users.remove(toRemove);
     }
 
-    public boolean loanBookTo(Book toLoan, User user){
+    /*public boolean loanBookTo(Book toLoan, User user){
+        catalogue.contains(toLoan);
 
-
-    }
+    }*/
 
 }

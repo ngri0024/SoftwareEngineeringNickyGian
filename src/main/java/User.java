@@ -53,6 +53,6 @@ public class User {
 
     public boolean removeBooksLoaned(Book toRemove) {
         return booksLoaned.remove(toRemove);
-    }
+    }//call reset method to reset days loaned also set isAvaliable to true
 
 }

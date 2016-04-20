@@ -31,9 +31,9 @@ public class Genre {
         return true;
     }
 
-    public boolean compare(Genre g){
+    /*public boolean compare(Genre g){
         return name.equals(g.getName())
                 && description.equals(g.getDescription());
-    }
+    }*/
 
 }

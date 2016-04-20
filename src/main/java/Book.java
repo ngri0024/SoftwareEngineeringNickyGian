@@ -7,13 +7,12 @@ public class Book {
     private int daysLoaned;
     private int yearPublished;
 
-    public Book(int bookID, String title, String author, String genre,
-                String genreDesc, int currentUserID, int daysLoaned, int yearPublished){
+    public Book(int bookID, String title, String author, Genre genre, int currentUserID, int daysLoaned, int yearPublished){
 
         this.bookID=bookID;
         this.title=title;
         this.author=author;
-        this.genre=new Genre(genre, genreDesc);
+        this.genre=genre;
         this.currentUserID=currentUserID;
         this.daysLoaned=daysLoaned;
         this.yearPublished=yearPublished;

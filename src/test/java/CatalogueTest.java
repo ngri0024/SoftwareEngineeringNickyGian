@@ -16,19 +16,19 @@ public class CatalogueTest {
     private Book book3;
     private Book book4;
     private List<Book> titleBooks;
+    private Genre fiction;
+    private Genre comedy;
 
 
     @Before
     public void setUp() throws Exception {
         catalogue= new Catalogue();
-        book1 = new Book(1000000, "Harry Potter", "J. K. Rowling", "Fiction",
-                "This book is about a wizard", -1, 0, 2000);
-        book2=new Book(2000000, "Harry Potter 2", "J. K. Rowling", "Fiction",
-                "This book is about a wizard", -1, 0, 2000);
-        book3=new Book(3000000, "Ron Potter 3", "J. K. Rowling", "Fiction",
-                "This book is about a wizard", -1, 0, 2000);
-        book4=new Book(4000000, "Spongebob book", "Squares", "Comedy",
-                "This book is funny", -1, 0, 2004);
+        fiction = new Genre("Fiction", "This book is about a wizard");
+        comedy = new Genre("Comedy", "This book is funny");
+        book1 = new Book(1000000, "Harry Potter", "J. K. Rowling",  fiction, -1, 0, 2000);
+        book2 = new Book(2000000, "Harry Potter 2", "J. K. Rowling", fiction, -1, 0, 2000);
+        book3 = new Book(3000000, "Ron Potter 3", "J. K. Rowling", fiction , -1, 0, 2000);
+        book4 = new Book(4000000, "Spongebob book", "Squares", comedy, -1, 0, 2004);
         titleBooks= new ArrayList<Book>();
     }
 
@@ -40,6 +40,8 @@ public class CatalogueTest {
         book4=null;
         catalogue=null;
         titleBooks=null;
+        comedy=null;
+        fiction=null;
     }
 
     @Test
@@ -113,7 +115,7 @@ public class CatalogueTest {
         assertEquals("Book was not added", true, catalogue.addBook(book4));
 
         assertEquals("Lists do not match", titleBooks,
-                catalogue.searchByGenre(new Genre("Fiction", "This book is about a wizard")));
+                catalogue.searchByGenre(fiction));
 
     }
 

@@ -38,7 +38,7 @@ public class Catalogue {
     public List<Book>  searchByGenre(Genre genre){
         List<Book> genreBooks= new ArrayList<Book>();
         for (Book b : books) {
-            if (b.getGenre().compare(genre)){
+            if (b.getGenre().equals(genre)){
                 genreBooks.add(b);
             }
         }
