@@ -11,6 +11,7 @@ public class Genre {
         return name;
     }
 
+    /*Sets the name of the genre. Cannot be blank.*/
     public boolean setName(String name){
         if(name.equals("")) {
             return false;
@@ -23,6 +24,7 @@ public class Genre {
         return description;
     }//may be needed in future development*/
 
+    /*Sets the description of the genre. Cannot be blank.*/
     public boolean setDescription(String description){
         if(description.equals("")) {
             return false;
