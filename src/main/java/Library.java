@@ -19,10 +19,10 @@ public class Library {
 
     /* This function is used to add a user to the list.
     Every user's ID must be unique.*/
-    public boolean addUser(User newUser){//
+    public boolean addUser(User newUser){
         int nUID = newUser.getID();
         for (User u : users) {
-            if (u.getID() == nUID) {
+            if (u.getID() == nUID) {//user is checked not to be in the list before adding
                 return false;
             }
         }
@@ -32,7 +32,14 @@ public class Library {
 
     /* Removes the user from the list.*/
     public boolean removeUser(User toRemove) {//has to be the same object
-        return users.remove(toRemove);
+        int userId = toRemove.getID();
+        for(User user:users) {
+            if (user.getID() == userId) {//the user id must match that of a user in the list to be deleted
+                return users.remove(user);
+
+            }
+        }
+        return false;
     }
 
     /* Finds the user in the list of users.
