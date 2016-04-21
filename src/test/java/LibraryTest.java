@@ -110,13 +110,24 @@ public class LibraryTest {
     }
 
     @Test
+    public void loanToUnAuthorisedTest() throws Exception {
+        assertEquals("Book was not added", true, library.addBook(book1));
+        assertEquals("Book was not added", true, library.addBook(book2));
+        assertEquals("Book was not added", true, library.addBook(book3));
+        assertEquals("User was not added", true, library.addUser(user2));
+        assertEquals("Book was Loaned", false, library.loanBookTo(book3,user1));
+    }
+
+    @Test
     public void loanedToOtherTest() throws Exception {
         assertEquals("Book was not added", true, library.addBook(book1));
         assertEquals("Book was not added", true, library.addBook(book2));
         assertEquals("Book was not added", true, library.addBook(book3));
+        assertEquals("User was not added", true, library.addUser(user1));
         book3.setDaysLoaned(20);
         assertEquals("Book was Loaned", false, library.loanBookTo(book3,user1));
     }
+
 
     @Test
     public void returnBookTest() throws Exception {
