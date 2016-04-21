@@ -8,10 +8,10 @@ public class User {
     private String surname;
     private List<Book> booksLoaned;
 
-    public User(int ID, String name, String surname) {
-        this.ID = ID;
-        this.name = name;
-        this.surname = surname;
+    public User(int ID, String name, String surname) throws UserException{
+        if(!setID(ID)) throw new UserException("Id cannot be smaller than 0");
+        if(!setName(name)) throw new UserException("Name cammpt be empty");
+        if(!setSurname(surname)) throw new UserException("Surname cannot be empty");
         this.booksLoaned = new ArrayList<Book>();
     }
 
@@ -19,24 +19,36 @@ public class User {
         return ID;
     }
 
-    public void setID(int ID) {
+    public boolean setID(int ID) {
+        if(ID <1){
+            return false;
+        }
         this.ID = ID;
+        return true;
     }
 
     public String getName() {
         return name;
     }
 
-    public void setName(String name) {
+    public boolean setName(String name) {
+        if(name.trim().length()<1){
+            return false;
+        }
         this.name = name;
+        return true;
     }
 
     public String getSurname() {
         return surname;
     }
 
-    public void setSurname(String surname) {
+    public boolean setSurname(String surname) {
+        if(surname.trim().length()<1){
+            return false;
+        }
         this.surname = surname;
+        return true;
     }
 
     public List<Book> getBooksLoaned() {

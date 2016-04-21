@@ -9,6 +9,7 @@ import static org.junit.Assert.assertEquals;
 
 public class UserTest {
     private User user;//created as userTest class variables
+    private User badUser;
     private Book book;
     private Book book2;
     private Book book3;
@@ -38,7 +39,19 @@ public class UserTest {
         fiction=null;
         comedy=null;
     }
+    @Test(expected=UserException.class)
+    public void badID() throws Exception {//a negative id is used
+        badUser=new User(-2,"Nicky","Griscti");
+    }
+    @Test(expected=UserException.class)
+    public void badName() throws Exception {//no name was given
+        badUser=new User(2,"  ","Griscti");
+    }
 
+    @Test(expected=UserException.class)
+    public void badSurname() throws Exception {//no surname was given
+        badUser=new User(2,"Nicky","   ");
+    }
     @Test
     public void addBooksLoaned() throws Exception {//a book is added, this should return true
         assertEquals("Book was not added", true, user.addBooksLoaned(book));
