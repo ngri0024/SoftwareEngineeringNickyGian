@@ -33,12 +33,22 @@ public class Library {
     }
 
     public boolean loanBookTo(Book toLoan, User user){
-        if(users.contains(user)) {
+        int loanId = toLoan.getBookID();
+        int userId = user.getID();
+        boolean userInSystem=false;
+        for(User u:users) {
+            if (u.getID() == userId) {
+                userInSystem = true;
+                user=u;//changing reference
+                break;
+            }
+        }
+        if(userInSystem) {
             for (Book book : catalogue.getAllBooks()) {
-                if (book.equals(toLoan)) {
+                if (book.getBookID() == loanId) {
                     if (book.getDaysLoaned() == -1) {//can be loaned
-                        return user.addBooksLoaned(toLoan);
-                    } else {
+                        return user.addBooksLoaned(book);
+                    } else {//is already loaned
                         return false;
                     }
                 }
