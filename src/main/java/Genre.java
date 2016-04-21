@@ -7,7 +7,7 @@ public class Genre {
         this.description=description;
     }
 
-    public String getName(){
+    public String getName(){//may be needed in future development
         return name;
     }
 
@@ -21,7 +21,7 @@ public class Genre {
 
     public String getDescription(){
         return description;
-    }
+    }//may be needed in future development
 
     public boolean setDescription(String description){
         if(description.equals("")) {
