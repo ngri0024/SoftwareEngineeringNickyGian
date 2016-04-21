@@ -38,7 +38,8 @@ public class Catalogue {
     public List<Book>  searchByGenre(Genre genre){
         List<Book> genreBooks= new ArrayList<Book>();
         for (Book b : books) {
-            if (b.getGenre().equals(genre)){
+            if ((b.getGenre().getName()).equals(genre.getName())){//when the genre name is the same
+                //by default the description for that genre should also be the same
                 genreBooks.add(b);
             }
         }
