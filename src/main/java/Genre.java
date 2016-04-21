@@ -19,9 +19,9 @@ public class Genre {
         return true;
     }
 
-    public String getDescription(){
+    /*public String getDescription(){
         return description;
-    }//may be needed in future development
+    }//may be needed in future development*/
 
     public boolean setDescription(String description){
         if(description.equals("")) {

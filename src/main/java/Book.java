@@ -23,34 +23,34 @@ public class Book {
         return bookID;
     }
 
-    public void setBookID(int bookID){
+    /*public void setBookID(int bookID){
         this.bookID=bookID;
-    }
+    }*/
 
     public String getTitle(){
         return title;
     }
 
-    public void setTitle(String title){
+    /*public void setTitle(String title){
         this.title=title;
-    }
+    }*/
 
-    public String getAuthor(){
+    /*public String getAuthor(){
         return author;
-    }
+    }*/
 
-    public void setAuthor(String author){
+    /*public void setAuthor(String author){
         this.author=author;
-    }
+    }*/
 
     public Genre getGenre(){
         return genre;
     }
 
-    public void setGenre(String genre,String genreDesc){
+    /*public void setGenre(String genre,String genreDesc){
         this.genre.setName(genre);
         this.genre.setDescription(genreDesc);
-    }
+    }*/
 
     public int getCurrentUserID(){
         return currentUserID;
@@ -72,9 +72,9 @@ public class Book {
         return yearPublished;
     }
 
-    public void setYearPublished(int yearPublished){
+    /*public void setYearPublished(int yearPublished){
         this.yearPublished=yearPublished;
-    }
+    }*/
 
 
 }

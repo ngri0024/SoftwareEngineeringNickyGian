@@ -27,9 +27,9 @@ public class User {
         return true;
     }
 
-    public String getName() {
+    /*public String getName() {
         return name;
-    }
+    }*/
 
     public boolean setName(String name) {
         if(name.trim().length()<1){
@@ -39,9 +39,9 @@ public class User {
         return true;
     }
 
-    public String getSurname() {
+    /*public String getSurname() {
         return surname;
-    }
+    }*/
 
     public boolean setSurname(String surname) {
         if(surname.trim().length()<1){
@@ -51,9 +51,9 @@ public class User {
         return true;
     }
 
-    public List<Book> getBooksLoaned() {
+    /*public List<Book> getBooksLoaned() {
         return booksLoaned;
-    }
+    }*/
 
     public boolean addBooksLoaned(Book newBook) {
         if(booksLoaned.size()<3){

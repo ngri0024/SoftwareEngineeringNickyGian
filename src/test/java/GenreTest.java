@@ -23,6 +23,11 @@ public class GenreTest {
         fiction = null;
     }
 
+    /*@Test
+    public void setDescriptionTest() throws Exception {
+        assertEquals("Genre description was returned", "This is test1", fiction.getDescription());
+    }*/
+
     @Test
     public void setNameInvalidTest() throws Exception {
         assertEquals("Genre name could not be empty", false, fiction.setName(""));
