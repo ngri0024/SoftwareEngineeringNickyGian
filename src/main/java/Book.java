@@ -47,9 +47,9 @@ public class Book {
         return genre;
     }
 
-    /*public void setGenre(String genre,String genreDesc){
-        this.genre.setName(genre);
-        this.genre.setDescription(genreDesc);
+    /*public void setGenre(Genre genre){
+        this.genre=genre;
+
     }*/
 
     public int getCurrentUserID(){
