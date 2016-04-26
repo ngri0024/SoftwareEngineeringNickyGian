@@ -76,12 +76,16 @@ public class User {
 
     /* Removes book from user's list of loaned books.*/
     public boolean removeBooksLoaned(Book toRemove) {
-       boolean removed=booksLoaned.remove(toRemove);
-        if(removed){
-            toRemove.setDaysLoaned(-1); // Sets book's days loaned to -1 meaning it is available.
-            toRemove.setCurrentUserID(-1);
+        int bookId=toRemove.getBookID();
+        for(Book b:booksLoaned){
+            if(bookId==b.getBookID()){
+                booksLoaned.remove(b);
+                b.setDaysLoaned(-1); // Sets book's days loaned to -1 meaning it is available.
+                b.setCurrentUserID(-1);
+                return true;
+            }
         }
-        return removed;
+       return false;
     }
 
 }
