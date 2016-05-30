@@ -15,10 +15,13 @@ public class CatalogueTest {
     private Filter filter;
     private Filter filter1;
     private Filter filter2;
+    private Filter filter3;
+    private Filter filter4;
     private Book book1;
     private Book book2;
     private Book book3;
     private Book book4;
+    private Book book5;
     private List<Book> titleBooks;
     private Genre fiction;
     private Genre comedy;
@@ -32,8 +35,9 @@ public class CatalogueTest {
         comedy = new Genre("Comedy", "This book is funny");
         book1 = new Book(1000000, "Harry Potter", "J. K. Rowling",  fiction, -1, 0, 2000);
         book2 = new Book(2000000, "Harry Potter 2", "J. K. Rowling", fiction, -1, 0, 2000);
-        book3 = new Book(3000000, "Ron Potter 3", "J. K. Trolling", fiction , -1, 0, 2000);
+        book3 = new Book(3000000, "Ron Potter 2", "J. K. Trolling", fiction , -1, 0, 2000);
         book4 = new Book(4000000, "Spongebob book", "Squares", comedy, -1, 0, 2004);
+        book5 =new Book(5000000, "Fake Potter 2", "J. K. Trolling", comedy , -1, 0, 2000);
         titleBooks= new ArrayList<Book>();
     }
 
@@ -42,10 +46,13 @@ public class CatalogueTest {
         filter = null;
         filter1 = null;
         filter2 = null;
+        filter3 = null;
+        filter4 = null;
         book1= null;
         book2=null;
         book3=null;
         book4=null;
+        book5=null;
         catalogue=catalogue.resetInstance();
         titleBooks=null;
         comedy=null;
@@ -180,6 +187,37 @@ public class CatalogueTest {
 
         filter.addFilter(filter1);
         filter.addFilter(filter2);
+
+        assertEquals("Lists do not match", titleBooks,
+                catalogue.searchByFilter(filter));
+    }
+
+    @Test //search by year and name
+    public void searchNameYopGenreTest() throws Exception {//tests for case sensitivity
+
+        titleBooks.add(book5);
+
+
+        assertEquals("Book was not added", true, catalogue.addBook(book1));
+        assertEquals("Book was not added", true, catalogue.addBook(book2));
+        assertEquals("Book was not added", true, catalogue.addBook(book5));
+        assertEquals("Book was not added", true, catalogue.addBook(book4));
+
+        filter = new CompositeFilter();
+        filter3 = new CompositeFilter();
+
+        filter1 = new YOPFilter(2000);
+        filter2 = new TitleFilter("Potter 2");
+
+        filter4 = new GenreFilter(comedy);
+
+
+        filter.addFilter(filter1);
+        filter.addFilter(filter2);
+
+        filter3.addFilter(filter4);
+
+        filter.addFilter(filter3);
 
         assertEquals("Lists do not match", titleBooks,
                 catalogue.searchByFilter(filter));
