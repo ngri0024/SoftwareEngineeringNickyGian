@@ -1,4 +1,4 @@
-import java.util.ArrayList;
+import java.util.*;
 
 public class CompositeFilter extends Filter{
 
@@ -10,20 +10,20 @@ public class CompositeFilter extends Filter{
     }
 
     @Override
-    public ArrayList<Book> search() {
-        ArrayList<Book> books= new ArrayList<Book>();
+    public AbstractSet<Book> search(List<Book> books) {
+        AbstractSet<Book> requestedBooks= new TreeSet<Book>();
         int count=0;
         for(Filter child: children){
 
             if(count==0){
-                books=child.search();
+                requestedBooks=child.search(books);
             }else{
-                books.retainAll(child.search());
+                requestedBooks.retainAll(child.search(books));
             }
             count++;
             //add intersect of lists
         }
-        return books;
+        return requestedBooks;
     }
 
     @Override

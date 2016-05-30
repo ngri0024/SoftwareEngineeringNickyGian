@@ -1,7 +1,16 @@
+import java.util.AbstractSet;
 import java.util.ArrayList;
+import java.util.List;
+import java.util.TreeSet;
 
 public abstract class Filter {
-    public abstract ArrayList<Book> search();
+
+
+
+
+    public abstract AbstractSet<Book> search(List<Book> books);
+
+
 
     public boolean addFilter(Filter filter){
         return false;
