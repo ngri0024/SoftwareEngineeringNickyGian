@@ -3,11 +3,11 @@ import java.util.ArrayList;
 public abstract class Filter {
     public abstract ArrayList<Book> search();
 
-    public boolean addFilter(){
+    public boolean addFilter(Filter filter){
         return false;
     }
 
-    public boolean removeFilter(){
+    public boolean removeFilter(Filter filter){
         return false;
     }
 
