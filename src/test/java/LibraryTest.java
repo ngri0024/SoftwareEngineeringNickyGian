@@ -36,7 +36,7 @@ public class LibraryTest {
 
     @After
     public void tearDown() throws Exception {
-        library = null;
+        library = library.destroyLibrary();
         user1 = null;
         user2 = null;
         book1 = null;

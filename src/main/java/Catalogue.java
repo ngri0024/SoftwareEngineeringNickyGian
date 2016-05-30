@@ -14,6 +14,12 @@ public class Catalogue {
         return catalogue;
     }
 
+    public Catalogue resetInstance(){//created since catalogue uses a singleton design pattern and
+        //must be removed for JunitTests to work as expected
+        catalogue=null;
+        return null;
+    }
+
 
     //set as private since only one instance should be made
     private Catalogue() {

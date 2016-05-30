@@ -38,7 +38,7 @@ public class CatalogueTest {
         book2=null;
         book3=null;
         book4=null;
-        catalogue=null;
+        catalogue=catalogue.resetInstance();
         titleBooks=null;
         comedy=null;
         fiction=null;

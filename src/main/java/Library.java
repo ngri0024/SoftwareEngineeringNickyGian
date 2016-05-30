@@ -13,6 +13,11 @@ public class Library {
         users= new ArrayList<User>();
     }
 
+    public Library destroyLibrary(){//created since catalogue uses a singleton design pattern and
+        //must be removed for JunitTests to work as expected
+        catalogue=catalogue.resetInstance();
+        return null;
+    }
     public boolean addBook(Book newBook){
         return catalogue.addBook(newBook);
     }
