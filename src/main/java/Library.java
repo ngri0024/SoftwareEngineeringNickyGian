@@ -9,7 +9,7 @@ public class Library {
 
     /* One library will have a catalogue containing the list of books, and a list of users.*/
     public Library(){
-        catalogue = new Catalogue();
+        catalogue = Catalogue.getCatalogue();
         users= new ArrayList<User>();
     }
 

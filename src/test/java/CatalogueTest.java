@@ -22,7 +22,7 @@ public class CatalogueTest {
 
     @Before
     public void setUp() throws Exception {
-        catalogue= new Catalogue();
+        catalogue= Catalogue.getCatalogue();
         fiction = new Genre("Fiction", "This book is about a wizard");
         comedy = new Genre("Comedy", "This book is funny");
         book1 = new Book(1000000, "Harry Potter", "J. K. Rowling",  fiction, -1, 0, 2000);

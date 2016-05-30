@@ -5,8 +5,18 @@ import java.util.List;
 public class Catalogue {
     private List<Book> books;
 
+    //for singleton design patter
+    private static Catalogue catalogue=null;
+    public static Catalogue getCatalogue(){
+        if(catalogue==null){
+            catalogue=new Catalogue();
+        }
+        return catalogue;
+    }
 
-    public Catalogue() {
+
+    //set as private since only one instance should be made
+    private Catalogue() {
         books = new ArrayList<Book>();
     }
 
