@@ -10,8 +10,8 @@ public class CompositeFilter extends Filter{
     }
 
     @Override
-    public AbstractSet<Book> search(List<Book> books) {
-        AbstractSet<Book> requestedBooks= new TreeSet<Book>();
+    public List<Book> search(List<Book> books) {
+        List<Book> requestedBooks= new ArrayList<Book>();
         int count=0;
         for(Filter child: children){
 

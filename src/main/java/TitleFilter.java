@@ -8,7 +8,7 @@ import java.util.TreeSet;
  */
 public class TitleFilter extends Filter{
 
-    String title;
+    private String title;
 
     public TitleFilter(String title){
         this.title = title;
@@ -16,9 +16,9 @@ public class TitleFilter extends Filter{
 
 
     @Override
-    public AbstractSet<Book> search(List<Book> books){
+    public List<Book> search(List<Book> books){
         title= title.toLowerCase();//removed case sensitivity
-        AbstractSet<Book> subTitle= new TreeSet<Book>();
+        List<Book> subTitle= new ArrayList<Book>();
         for (Book b : books) {
             if (b.getTitle().toLowerCase().contains(title)){//comparing the case insensitive title to be a substring
                 subTitle.add(b);//adding the book to the list if this condition is satisfied

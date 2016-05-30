@@ -5,12 +5,14 @@ import org.junit.Test;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.TreeSet;
 
 import static org.junit.Assert.*;
 
 public class CatalogueTest {
 
     private Catalogue catalogue;//created as userTest class variables
+    private Filter filter;
     private Book book1;
     private Book book2;
     private Book book3;
@@ -22,6 +24,7 @@ public class CatalogueTest {
 
     @Before
     public void setUp() throws Exception {
+
         catalogue= Catalogue.getCatalogue();
         fiction = new Genre("Fiction", "This book is about a wizard");
         comedy = new Genre("Comedy", "This book is funny");
@@ -34,6 +37,7 @@ public class CatalogueTest {
 
     @After
     public void tearDown() throws Exception {
+        filter = null;
         book1= null;
         book2=null;
         book3=null;
@@ -84,8 +88,8 @@ public class CatalogueTest {
         assertEquals("Book was not added", true, catalogue.addBook(book2));
         assertEquals("Book was not added", true, catalogue.addBook(book3));
 
-
-        assertEquals("Lists do not match", titleBooks, catalogue.searchByTitle("Harry"));
+        filter = new TitleFilter("Harry");
+        assertEquals("Lists do not match", titleBooks, catalogue.searchByFilter(filter));
 
     }
     @Test
@@ -97,8 +101,8 @@ public class CatalogueTest {
         assertEquals("Book was not added", true, catalogue.addBook(book2));
         assertEquals("Book was not added", true, catalogue.addBook(book3));
 
-
-        assertEquals("Lists do not match", titleBooks, catalogue.searchByTitle("HaRrY"));
+        filter = new TitleFilter("HaRrY");
+        assertEquals("Lists do not match", titleBooks, catalogue.searchByFilter(filter));
         
     }
 

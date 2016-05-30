@@ -41,6 +41,7 @@ public class Catalogue {
         return books;
     }
 
+    /*
     public List<Book>  searchByTitle(String title){
         title= title.toLowerCase();//removed case sensitivity
         List<Book> subTitle= new ArrayList<Book>();
@@ -50,6 +51,15 @@ public class Catalogue {
             }
         }
         return subTitle;
+    }
+*/
+    public List<Book> searchByFilter(Filter filter){
+        if(filter==null){
+            return null;
+        }
+
+        return filter.search(books);
+
     }
 
     public List<Book>  searchByGenre(Genre genre){
