@@ -74,7 +74,7 @@ public class Catalogue {
         }
         return genreBooks;
     }
-*/
+
     public List<Book>  searchByYearOfPublication(int yop){
         List<Book> yopBooks= new ArrayList<Book>();
         for (Book b : books) {
@@ -86,6 +86,6 @@ public class Catalogue {
         return yopBooks;
     }
 
-
+*/
 
 }

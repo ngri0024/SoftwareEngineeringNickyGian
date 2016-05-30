@@ -152,9 +152,10 @@ public class CatalogueTest {
         assertEquals("Book was not added", true, catalogue.addBook(book3));
         assertEquals("Book was not added", true, catalogue.addBook(book4));
 
-        assertEquals("Lists do not match", titleBooks,
-                catalogue.searchByYearOfPublication(2000));
+        filter = new YOPFilter(2000);
 
+        assertEquals("Lists do not match", titleBooks,
+                catalogue.searchByFilter(filter));
     }
 
 }
