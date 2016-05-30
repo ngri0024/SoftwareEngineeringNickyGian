@@ -62,7 +62,7 @@ public class Catalogue {
         return filter.search(books);
 
     }
-
+/*
     public List<Book>  searchByGenre(Genre genre){
         String gName=genre.getName();//only the genre name is needed
         List<Book> genreBooks= new ArrayList<Book>();
@@ -74,7 +74,7 @@ public class Catalogue {
         }
         return genreBooks;
     }
-
+*/
     public List<Book>  searchByYearOfPublication(int yop){
         List<Book> yopBooks= new ArrayList<Book>();
         for (Book b : books) {

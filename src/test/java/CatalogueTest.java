@@ -122,26 +122,23 @@ public class CatalogueTest {
     }
 
 
-
-
-
-
     @Test
     public void searchGenreTest() throws Exception {//tests for case sensitivity
         titleBooks.add(book1);
         titleBooks.add(book2);
         titleBooks.add(book3);
 
-
         assertEquals("Book was not added", true, catalogue.addBook(book1));
         assertEquals("Book was not added", true, catalogue.addBook(book2));
         assertEquals("Book was not added", true, catalogue.addBook(book3));
         assertEquals("Book was not added", true, catalogue.addBook(book4));
 
-        assertEquals("Lists do not match", titleBooks,
-                catalogue.searchByGenre(fiction));
+        filter = new GenreFilter(fiction);
 
+        assertEquals("Lists do not match", titleBooks,
+                catalogue.searchByFilter(filter));
     }
+
 
     @Test
     public void searchYopTest() throws Exception {//tests for case sensitivity
