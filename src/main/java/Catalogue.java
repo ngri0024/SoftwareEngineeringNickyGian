@@ -41,7 +41,20 @@ public class Catalogue {
         return books;
     }
 
+
+    //using Composite Design pattern
+    public List<Book> searchByFilter(Filter filter){
+        if(filter==null){
+            return null;
+        }
+
+        return filter.search(books);
+
+    }
+
+
     /*
+
     public List<Book>  searchByTitle(String title){
         title= title.toLowerCase();//removed case sensitivity
         List<Book> subTitle= new ArrayList<Book>();
@@ -52,17 +65,7 @@ public class Catalogue {
         }
         return subTitle;
     }
-*/
 
-    public List<Book> searchByFilter(Filter filter){
-        if(filter==null){
-            return null;
-        }
-
-        return filter.search(books);
-
-    }
-/*
     public List<Book>  searchByGenre(Genre genre){
         String gName=genre.getName();//only the genre name is needed
         List<Book> genreBooks= new ArrayList<Book>();
