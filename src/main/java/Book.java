@@ -35,9 +35,9 @@ public class Book {
         this.title=title;
     }*/
 
-    /*public String getAuthor(){
+    public String getAuthor(){
         return author;
-    }*/
+    }
 
     /*public void setAuthor(String author){
         this.author=author;

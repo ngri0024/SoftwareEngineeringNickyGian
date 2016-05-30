@@ -30,7 +30,7 @@ public class CatalogueTest {
         comedy = new Genre("Comedy", "This book is funny");
         book1 = new Book(1000000, "Harry Potter", "J. K. Rowling",  fiction, -1, 0, 2000);
         book2 = new Book(2000000, "Harry Potter 2", "J. K. Rowling", fiction, -1, 0, 2000);
-        book3 = new Book(3000000, "Ron Potter 3", "J. K. Rowling", fiction , -1, 0, 2000);
+        book3 = new Book(3000000, "Ron Potter 3", "J. K. Trolling", fiction , -1, 0, 2000);
         book4 = new Book(4000000, "Spongebob book", "Squares", comedy, -1, 0, 2004);
         titleBooks= new ArrayList<Book>();
     }
@@ -92,6 +92,7 @@ public class CatalogueTest {
         assertEquals("Lists do not match", titleBooks, catalogue.searchByFilter(filter));
 
     }
+
     @Test
     public void searchCapTitleTest() throws Exception {//tests for case sensitivity
         titleBooks.add(book1);
@@ -105,6 +106,25 @@ public class CatalogueTest {
         assertEquals("Lists do not match", titleBooks, catalogue.searchByFilter(filter));
         
     }
+
+
+    @Test
+    public void searchAuthorTest() throws Exception {//test for substring
+        titleBooks.add(book1);
+        titleBooks.add(book2);
+
+        assertEquals("Book was not added", true, catalogue.addBook(book1));
+        assertEquals("Book was not added", true, catalogue.addBook(book2));
+        assertEquals("Book was not added", true, catalogue.addBook(book3));
+
+        filter = new AuthorFilter("Rowling");
+        assertEquals("Lists do not match", titleBooks, catalogue.searchByFilter(filter));
+    }
+
+
+
+
+
 
     @Test
     public void searchGenreTest() throws Exception {//tests for case sensitivity
