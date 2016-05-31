@@ -112,7 +112,7 @@ public class Library {
                     if (b.getDaysLoaned() == -1) {//is available
                         return false;
                     } else {//is already loaned, register interest
-                        if(user.addInterestedBook(b)) {
+                        if(user.addInterestedBook(b)) {//might already be in the users interestedBooks list
                             b.attach(user);
                             return true;
                         }
@@ -126,22 +126,22 @@ public class Library {
         return false;
     }
 
-    public boolean loanToNextInterested(Book book){
+    private boolean loanToNextInterested(Book book){
         List<Observer> temp= new ArrayList<Observer>();
         Observer currentObserver;
         for (Book b : catalogue.getAllBooks()) {
             if(b.getBookID() == book.getBookID()) {//to match the book
                while((currentObserver=b.getNextObserver())!=null){
-                   if(loanBookTo(b,(User)currentObserver)){
-                       b.concatObservers(temp);
-                       b.notifyObservers();
+                   if(loanBookTo(b,(User)currentObserver)){//attemp to loan the book to the currentObserver
+                       b.concatObservers(temp);//concatenate unsuccessfully loaned to users list
+                       b.notifyObservers();//send notification
                        return true;
                    }else{
-                       temp.add(currentObserver);
+                       temp.add(currentObserver);//just add to the list
                    }
 
                }
-                b.concatObservers(temp);
+                b.concatObservers(temp);//concatenate unsuccessfully loaned to users list
             }
         }
         return true;
