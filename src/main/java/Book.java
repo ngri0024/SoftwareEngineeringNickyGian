@@ -1,3 +1,6 @@
+import java.util.ArrayList;
+import java.util.List;
+
 public class Book implements Subject{
     private int bookID;
     private String title;
@@ -6,6 +9,7 @@ public class Book implements Subject{
     private int currentUserID;
     private int daysLoaned;
     private int yearPublished;
+    private List<Observer> interestedClients;
 
     public Book(int bookID, String title, String author, Genre genre, int currentUserID, int daysLoaned, int yearPublished){
 
@@ -16,6 +20,7 @@ public class Book implements Subject{
         this.currentUserID=currentUserID;
         this.daysLoaned=daysLoaned;
         this.yearPublished=yearPublished;
+        interestedClients=new ArrayList<Observer>();
 
     }
 
@@ -74,17 +79,19 @@ public class Book implements Subject{
 
     @Override
     public void attach(Observer observer) {
-
+        interestedClients.add(observer);
     }
 
     @Override
     public void detach(Observer observer) {
-
+        interestedClients.remove(observer);
     }
 
     @Override
     public void notifyObservers() {
-
+            for(Observer observer: interestedClients){
+                observer.update();
+            }
     }
 
     /*public void setYearPublished(int yearPublished){
