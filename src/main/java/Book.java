@@ -97,6 +97,19 @@ public class Book implements Subject{
             }
     }
 
+    public Observer getNextObserver(){
+        Observer first=null;
+        if(interestedClients.size()>0){
+            first=interestedClients.get(0);
+            interestedClients.remove(first);
+        }
+        return first;
+    }
+
+
+    public void concatObservers(List<Observer> observers){
+        interestedClients.addAll(observers);
+    }
     /*public void setYearPublished(int yearPublished){
         this.yearPublished=yearPublished;
     }*/

@@ -81,7 +81,12 @@ public class Library {
         int userId = toReturn.getCurrentUserID();
         for (User u : users) {
             if (userId == u.getID()) {
-                return u.removeBooksLoaned(toReturn);
+                if(u.removeBooksLoaned(toReturn)){
+                   loanToNextInterested(toReturn);
+                   return true;
+                }else{
+                    return false;
+                }
             }
         }
     return false;
@@ -102,9 +107,9 @@ public class Library {
         if(userInSystem) {
             for (Book b: catalogue.getAllBooks()) {
                 if (b.getBookID() == loanId) {//to match the book
-                    if (b.getDaysLoaned() == -1) {//can be loaned
+                    if (b.getDaysLoaned() == -1) {//is available
                         return false;
-                    } else {//is already loaned
+                    } else {//is already loaned, register interest
                         user.addInterestedBook(b);
                         b.attach(user);
                         return true;
@@ -113,5 +118,28 @@ public class Library {
             }
         }
         return false;
+    }
+
+    public boolean loanToNextInterested(Book book){
+        List<Observer> temp= new ArrayList<Observer>();
+        Observer currentObserver;
+        for (Book b : catalogue.getAllBooks()) {
+            if(b.getBookID() == book.getBookID()) {//to match the book
+               while((currentObserver=b.getNextObserver())!=null){
+                   if(loanBookTo(b,(User)currentObserver)){
+                       b.concatObservers(temp);
+                       b.notifyObservers();
+                       return true;
+                   }else{
+                       temp.add(currentObserver);
+                   }
+
+               }
+                b.concatObservers(temp);
+            }
+        }
+
+        return true;
+
     }
 }
