@@ -80,18 +80,18 @@ public class Book implements Subject{
     @Override
     public void attach(Observer observer){
         interestedClients.add(observer);
-        observer.update(bookID,interestedClients.size());
+        observer.update(bookID,interestedClients.size());//updates position for the book added in the observer
     }
 
     @Override
     public void detach(Observer observer) {
-        interestedClients.remove(observer);
+        interestedClients.remove(observer);//attempts to remove the observer from the list
     }
 
     @Override
     public void notifyObservers() {
             int position=1;
-            for(Observer observer: interestedClients){
+            for(Observer observer: interestedClients){//sends the new position to each observer in interestedClients list
                 observer.update(bookID,position);
                 position++;
             }
@@ -99,16 +99,16 @@ public class Book implements Subject{
 
     public Observer getNextObserver(){
         Observer first=null;
-        if(interestedClients.size()>0){
+        if(interestedClients.size()>0){//returns and removes the nextObserver
             first=interestedClients.get(0);
-            interestedClients.remove(first);
+            detach(first);
         }
-        return first;
+        return first;//ca return null
     }
 
 
     public void concatObservers(List<Observer> observers){
-        interestedClients.addAll(observers);
+        interestedClients.addAll(observers);//concatenates observers with interestedClients
     }
     /*public void setYearPublished(int yearPublished){
         this.yearPublished=yearPublished;

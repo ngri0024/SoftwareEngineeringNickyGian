@@ -18,6 +18,8 @@ public class Library {
         catalogue=catalogue.resetInstance();
         return null;
     }
+
+
     public boolean addBook(Book newBook){
         return catalogue.addBook(newBook);
     }
@@ -82,7 +84,7 @@ public class Library {
         for (User u : users) {
             if (userId == u.getID()) {
                 if(u.removeBooksLoaned(toReturn)){
-                   loanToNextInterested(toReturn);
+                   loanToNextInterested(toReturn);//tries to loan the book to the next Interested User
                    return true;
                 }else{
                     return false;

@@ -102,6 +102,7 @@ public class User implements Observer{
         for(Pair pair: interestedBooks){//goes through all the books until the book to update is found
             if(pair.getBook().getBookID()==bookID){
                 pair.setPosition(position);
+                System.out.println("Book ID: "+bookID +"Book Position "+pair.getPosition());
                 break;
             }
         }

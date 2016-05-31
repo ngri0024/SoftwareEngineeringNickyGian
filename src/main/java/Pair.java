@@ -1,6 +1,4 @@
-/**
- * Created by Nicky on 5/31/2016.
- */
+
 public class Pair {
     private Book book;
     private int position;
@@ -22,7 +20,7 @@ public class Pair {
         return book;
     }
 
-    public int getPosition() {
+    public int getPosition(){
         return position;
     }
 }
