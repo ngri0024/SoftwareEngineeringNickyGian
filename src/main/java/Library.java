@@ -106,15 +106,20 @@ public class Library {
             }
         }
 
-        if(userInSystem) {
+        //user must be in system, and book interested in must not already be loaned to that user
+        if(userInSystem && (book.getCurrentUserID() != user.getID())) {
             for (Book b: catalogue.getAllBooks()) {
                 if (b.getBookID() == loanId) {//to match the book
                     if (b.getDaysLoaned() == -1) {//is available
                         return false;
                     } else {//is already loaned, register interest
-                        user.addInterestedBook(b);
-                        b.attach(user);
-                        return true;
+                        if(user.addInterestedBook(b)) {
+                            b.attach(user);
+                            return true;
+                        }
+                        else {
+                            return false;
+                        }
                     }
                 }
             }

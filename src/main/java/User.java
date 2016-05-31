@@ -78,9 +78,15 @@ public class User implements Observer{
         return false;//by default returns false
     }
 
-    public void addInterestedBook(Book newBook){
+    public boolean addInterestedBook(Book newBook){
+        for(Pair p : interestedBooks){
+            if(p.getBook().getBookID() == newBook.getBookID()){
+                return false;
+            }
+        }
         interestedBooks.add(new Pair(newBook, 0));//this will be updated immediately with
         // the right position on book.attach()
+        return true;
     }
 
     /* Removes book from user's list of loaned books.*/
@@ -102,7 +108,7 @@ public class User implements Observer{
         for(Pair pair: interestedBooks){//goes through all the books until the book to update is found
             if(pair.getBook().getBookID()==bookID){
                 pair.setPosition(position);
-                System.out.println("Book ID: "+bookID +"Book Position "+pair.getPosition());
+                System.out.println("Book ID: "+bookID +" Book Position "+pair.getPosition());
                 break;
             }
         }

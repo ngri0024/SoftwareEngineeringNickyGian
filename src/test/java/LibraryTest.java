@@ -155,9 +155,10 @@ public class LibraryTest {
 
         assertEquals("Book was not Loaned", true, library.loanBookTo(book1,user1));
 
-        assertEquals("Book was not Registered", true, library.registerInterest(book1,user2));
-        assertEquals("Book was Registered", false, library.registerInterest(book1,user1));
-        assertEquals("Book was Registered", false, library.registerInterest(book2,user1));
+        assertEquals("Book was not Registered", true, library.registerInterest(book1,user2)); //user 2 registers interest
+        assertEquals("Book was Registered", false, library.registerInterest(book1,user2)); //user 2 tries to register same interest again
+        assertEquals("Book was Registered", false, library.registerInterest(book1,user1)); //user 1 tries to register interest on book it already has
+        assertEquals("Book was Registered", false, library.registerInterest(book2,user1)); //user 1 tries to register interest on an available book
     }
 
 
