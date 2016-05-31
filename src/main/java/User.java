@@ -74,8 +74,8 @@ public class User implements Observer{
             booksLoaned.add(newBook); //adds book to user's list.
             for(Pair p : interestedBooks){
                 if(p.getBook().getBookID() == newBook.getBookID()){
-                    interestedBooks.remove(p);
-                    p.getBook().detach(this);
+                    interestedBooks.remove(p);//if in interestedBooks list remove it
+                    p.getBook().detach(this);//also remove from the book Observer list
                     p.getBook().notifyObservers();
                     break;
                 }
