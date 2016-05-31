@@ -192,6 +192,57 @@ public class CatalogueTest {
                 catalogue.searchByFilter(filter));
     }
 
+    @Test //testing remove
+    public void removeFilterTest() throws Exception {//tests for case sensitivity
+        titleBooks.add(book1);
+        titleBooks.add(book2);
+        titleBooks.add(book3);
+        titleBooks.add(book5);
+
+        assertEquals("Book was not added", true, catalogue.addBook(book1));
+        assertEquals("Book was not added", true, catalogue.addBook(book2));
+        assertEquals("Book was not added", true, catalogue.addBook(book3));
+        assertEquals("Book was not added", true, catalogue.addBook(book4));
+        assertEquals("Book was not added", true, catalogue.addBook(book5));
+
+        filter = new CompositeFilter();
+        filter1 = new YOPFilter(2000);
+        filter2 = new TitleFilter("HaRrY");
+
+        filter.addFilter(filter1);
+        filter.addFilter(filter2);
+        filter.removeFilter(filter2);
+
+        assertEquals("Lists do not match", titleBooks,
+                catalogue.searchByFilter(filter));
+    }
+
+    @Test //testing getChild()
+    public void getChildFilterTest() throws Exception {//tests for case sensitivity
+        titleBooks.add(book1);
+        titleBooks.add(book2);
+        titleBooks.add(book3);
+        titleBooks.add(book5);
+
+        assertEquals("Book was not added", true, catalogue.addBook(book1));
+        assertEquals("Book was not added", true, catalogue.addBook(book2));
+        assertEquals("Book was not added", true, catalogue.addBook(book3));
+        assertEquals("Book was not added", true, catalogue.addBook(book4));
+        assertEquals("Book was not added", true, catalogue.addBook(book5));
+
+        filter = new CompositeFilter();
+        filter1 = new YOPFilter(2000);
+        filter2 = new TitleFilter("HaRrY");
+
+        filter.addFilter(filter1);
+        filter.addFilter(filter2);
+        filter = filter.getChild(0);
+
+        assertEquals("Lists do not match", titleBooks,
+                catalogue.searchByFilter(filter));
+    }
+
+
     @Test //search by year and name
     public void searchNameYopGenreTest() throws Exception {//tests for case sensitivity
 
