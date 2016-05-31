@@ -82,6 +82,7 @@ public class LibraryTest {
         assertEquals("User was not deleted", false, library.removeUser(user2));
     }
 
+
     @Test
     public void notFoundLoanTest() throws Exception {
         assertEquals("Book was not added", true, library.addBook(book1));
@@ -262,16 +263,19 @@ public class LibraryTest {
         assertEquals("Book was not added", true, library.addBook(book1));
         assertEquals("Book was not added", true, library.addBook(book2));
         assertEquals("Book was not added", true, library.addBook(book3));
+        assertEquals("Book was not added", true, library.addBook(book4));
+
 
         assertEquals("User was not added", true, library.addUser(user1));
         assertEquals("User was not added", true, library.addUser(user2));
 
         assertEquals("Book was not Loaned", true, library.loanBookTo(book1,user1));
         assertEquals("Book was not Loaned", true, library.loanBookTo(book2,user2));
+        assertEquals("Book was not Loaned", true, library.loanBookTo(book4,user2));
 
         assertEquals("Book was not Registered", true, library.registerInterest(book2,user1));
+        assertEquals("Book was not Registered", true, library.registerInterest(book4,user1));
 
         assertEquals("Book was not Loaned", true, library.loanBookTo(book3,user1));
-
     }
 }

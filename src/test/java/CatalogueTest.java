@@ -76,6 +76,7 @@ public class CatalogueTest {
         assertEquals("Book was not added", true, catalogue.addBook(book2));
     }
 
+
     @Test
     public void getAllBooksTest() throws Exception {//this is for a getter so not really useful
         titleBooks.add(book1);
@@ -90,6 +91,13 @@ public class CatalogueTest {
 
     }
 
+    @Test
+    public void getAddFromTOChildTest() throws Exception {//this is for a getter so not really useful
+        filter = new TitleFilter("Harry");
+        assertEquals("Child Filter Added", false, filter.addFilter(new TitleFilter("Harry") ));
+        assertEquals("Child Filter Removed", false, filter.removeFilter(new TitleFilter("Harry") ));
+
+    }
     @Test
     public void searchSubTitleTest() throws Exception {//test for substring
         titleBooks.add(book1);
