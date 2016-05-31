@@ -4,7 +4,7 @@ public abstract class Filter {
 
 
 
-
+    //specific to each subclass
     public abstract List<Book> search(List<Book> books);
 
 

@@ -6,7 +6,7 @@ public class GenreFilter extends Filter{
     private Genre genre;
 
     public GenreFilter(Genre genre){
-        this.genre = genre; //removed case sensitivity
+        this.genre = genre;
     }
 
 

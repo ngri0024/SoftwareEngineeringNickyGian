@@ -7,15 +7,16 @@ public class Library {
     private List<User> users;
     private final int loanDuration=28;
 
-    /* One library will have a catalogue containing the list of books, and a list of users.*/
+    /* The library will have a catalogue containing the list of books, and a list of users.*/
     public Library(){
         catalogue = Catalogue.getCatalogue();
         users= new ArrayList<User>();
     }
 
+
     public Library destroyLibrary(){//created since catalogue uses a singleton design pattern and
         //must be removed for JunitTests to work as expected
-        catalogue=catalogue.resetInstance();
+        catalogue=catalogue.resetInstance();//needed for JUnit
         return null;
     }
 
@@ -38,7 +39,7 @@ public class Library {
     }
 
     /* Removes the user from the list.*/
-    public boolean removeUser(User toRemove) {//has to be the same object
+    public boolean removeUser(User toRemove) {//has to same ID
         int userId = toRemove.getID();
         for(User user:users) {
             if (user.getID() == userId) {//the user id must match that of a user in the list to be deleted
