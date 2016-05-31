@@ -140,8 +140,7 @@ public class Library {
                 b.concatObservers(temp);
             }
         }
-
         return true;
-
     }
+
 }

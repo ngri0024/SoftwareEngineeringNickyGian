@@ -144,4 +144,65 @@ public class LibraryTest {
         assertEquals("Book was not Loaned", true, library.loanBookTo(book1,user1));
         assertEquals("Book was removed", false, library.returnBook(book2));
     }
+
+    @Test
+    public void registerInterestTest() throws Exception {
+        assertEquals("Book was not added", true, library.addBook(book1));
+        assertEquals("Book was not added", true, library.addBook(book2));
+
+        assertEquals("User was not added", true, library.addUser(user1));
+        assertEquals("User was not added", true, library.addUser(user2));
+
+        assertEquals("Book was not Loaned", true, library.loanBookTo(book1,user1));
+
+        assertEquals("Book was not Registered", true, library.registerInterest(book1,user2));
+        assertEquals("Book was Registered", false, library.registerInterest(book1,user1));
+        assertEquals("Book was Registered", false, library.registerInterest(book2,user1));
+    }
+
+
+    @Test
+    public void loanToNextInterestedTest() throws Exception {
+        assertEquals("Book was not added", true, library.addBook(book1));
+
+        assertEquals("User was not added", true, library.addUser(user1));
+        assertEquals("User was not added", true, library.addUser(user2));
+
+        assertEquals("Book was not Loaned", true, library.loanBookTo(book1,user1));
+
+        assertEquals("Book was not Registered", true, library.registerInterest(book1,user2));
+
+        assertEquals("Book was not returned", true, library.returnBook(book1));
+        assertEquals("Book was not returned", true, library.returnBook(book1));
+    }
+
+
+    @Test //user has 3 books and next interested book cannot be loaned to user
+    public void loanToNextFullUserTest() throws Exception {
+        assertEquals("Book was not added", true, library.addBook(book1));
+        assertEquals("Book was not added", true, library.addBook(book2));
+        assertEquals("Book was not added", true, library.addBook(book3));
+        assertEquals("Book was not added", true, library.addBook(book4));
+
+
+        assertEquals("User was not added", true, library.addUser(user1));
+        assertEquals("User was not added", true, library.addUser(user2));
+
+        assertEquals("Book was not Loaned", true, library.loanBookTo(book1,user1));
+
+        assertEquals("Book was not Loaned", true, library.loanBookTo(book2,user2));
+        assertEquals("Book was not Loaned", true, library.loanBookTo(book3,user2));
+        assertEquals("Book was not Loaned", true, library.loanBookTo(book4,user2));
+
+        assertEquals("Book was not Registered", true, library.registerInterest(book1,user2));
+
+        assertEquals("Book was not returned", true, library.returnBook(book1));
+        assertEquals("Book was returned", false, library.returnBook(book1));
+    }
+
+
+
+
+
+
 }
