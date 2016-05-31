@@ -11,14 +11,14 @@ public class CompositeFilter extends Filter{
 
     @Override
     public List<Book> search(List<Book> books) {
-        List<Book> requestedBooks= new ArrayList<Book>();
+        List<Book> requestedBooks= new ArrayList<Book>();//temporary storage
         int count=0;
         for(Filter child: children){
 
             if(count==0){
-                requestedBooks=child.search(books);
+                requestedBooks=child.search(books);//first time simply put as requestedBooks
             }else{
-                requestedBooks.retainAll(child.search(books));
+                requestedBooks.retainAll(child.search(books));//else intersection
             }
             count++;
             //add intersect of lists
@@ -38,10 +38,10 @@ public class CompositeFilter extends Filter{
 
     @Override
     public Filter getChild(int index) {
-        if(index>=0 && index<children.size()){
-            return children.get(index);
+        if(index>=0 && index<children.size()){//limit checking
+            return children.get(index);//returns child
         }
-        return null;
+        return null;//otherwise null
     }
 
 }

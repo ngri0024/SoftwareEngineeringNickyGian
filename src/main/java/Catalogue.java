@@ -32,7 +32,7 @@ public class Catalogue {
                 return false;
             }
         }
-        books.add(newBook);
+        books.add(newBook);//only add if it is not already in the catalogue
         return true;
     }
 
@@ -40,15 +40,12 @@ public class Catalogue {
         return books;
     }
 
-
     //using Composite Design pattern
     public List<Book> searchByFilter(Filter filter){
         if(filter==null){
-            return books;
+            return books;//returns all the books
         }
-
-        return filter.search(books);
-
+        return filter.search(books);//otherwise refine with filter
     }
 
 
