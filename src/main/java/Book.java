@@ -80,6 +80,7 @@ public class Book implements Subject{
     @Override
     public void attach(Observer observer){
         interestedClients.add(observer);
+        observer.update(bookID,interestedClients.size());
     }
 
     @Override

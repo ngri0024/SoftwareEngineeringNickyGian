@@ -105,6 +105,7 @@ public class Library {
                     if (b.getDaysLoaned() == -1) {//can be loaned
                         return false;
                     } else {//is already loaned
+                        user.addInterestedBook(b);
                         b.attach(user);
                         return true;
                     }

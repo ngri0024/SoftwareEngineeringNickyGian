@@ -78,6 +78,11 @@ public class User implements Observer{
         return false;//by default returns false
     }
 
+    public void addInterestedBook(Book newBook){
+        interestedBooks.add(new Pair(newBook, 0));//this will be updated immediately with
+        // the right position on book.attach()
+    }
+
     /* Removes book from user's list of loaned books.*/
     public boolean removeBooksLoaned(Book toRemove) {
         int bookId=toRemove.getBookID();
@@ -94,11 +99,11 @@ public class User implements Observer{
 
     @Override
     public void update(int bookID, int position){
-        for(Pair pair: interestedBooks){
+        for(Pair pair: interestedBooks){//goes through all the books until the book to update is found
             if(pair.getBook().getBookID()==bookID){
                 pair.setPosition(position);
+                break;
             }
         }
-
     }
 }
