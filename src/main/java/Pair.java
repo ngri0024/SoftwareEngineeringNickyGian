@@ -8,9 +8,10 @@ public class Pair {
         this.position=position;
     }
 
+    /*
     public void setBook(Book book) {
         this.book = book;
-    }
+    }*/
 
     public void setPosition(int position) {
         this.position = position;

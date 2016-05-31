@@ -12,6 +12,8 @@ public class LibraryTest {
 
     private User user1;
     private User user2;
+    private User user3;
+    private User user4;
     private Book book1;
     private Book book2;
     private Book book3;
@@ -27,6 +29,8 @@ public class LibraryTest {
         comedy = new Genre("Comedy", "This book is funny");
         user1 = new User(1, "Gian", "Laferla");
         user2 = new User(2, "Nicky", "Soler");
+        user3 = new User(3, "Jonny", "Borg");
+        user4 = new User(4, "Glenn", "Sciortino");
         book1 = new Book(1000000, "Harry Potter", "J. K. Rowling",  fiction, -1, -1, 2000);
         book2 = new Book(2000000, "Harry Potter 2", "J. K. Rowling", fiction, -1, -1, 2000);
         book3 = new Book(3000000, "Ron Potter 3", "J. K. Rowling", fiction , -1, -1, 2000);
@@ -39,6 +43,8 @@ public class LibraryTest {
         library = library.destroyLibrary();
         user1 = null;
         user2 = null;
+        user3 = null;
+        user4 = null;
         book1 = null;
         book2 = null;
         book3 = null;
@@ -226,12 +232,46 @@ public class LibraryTest {
         assertEquals("Book was not returned", true, library.returnBook(book1));
 
         assertEquals("Book was not Loaned", true, library.loanBookTo(book4,user1));
-
-
-
     }
 
+    @Test
+    public void notifyObserservsTest() throws Exception {
+        assertEquals("Book was not added", true, library.addBook(book1));
+
+        assertEquals("User was not added", true, library.addUser(user1));
+        assertEquals("User was not added", true, library.addUser(user2));
+        assertEquals("User was not added", true, library.addUser(user3));
+        assertEquals("User was not added", true, library.addUser(user4));
 
 
+        assertEquals("Book was not Loaned", true, library.loanBookTo(book1,user1));
 
+        assertEquals("Book was not Registered", true, library.registerInterest(book1,user2));
+        assertEquals("Book was not Registered", true, library.registerInterest(book1,user3));
+        assertEquals("Book was not Registered", true, library.registerInterest(book1,user4));
+
+        assertEquals("Book was not returned", true, library.returnBook(book1)); //book returned from user 1
+        assertEquals("Book was not returned", true, library.returnBook(book1)); //book returned from user 2
+        assertEquals("Book was not returned", true, library.returnBook(book1)); //book returned from user 3
+        assertEquals("Book was not returned", true, library.returnBook(book1)); //book returned from user 4
+        assertEquals("Book was returned", false, library.returnBook(book1)); //book sohuld not be returned
+    }
+
+    @Test
+    public void iterateThroughInterestedBooks() throws Exception {
+        assertEquals("Book was not added", true, library.addBook(book1));
+        assertEquals("Book was not added", true, library.addBook(book2));
+        assertEquals("Book was not added", true, library.addBook(book3));
+
+        assertEquals("User was not added", true, library.addUser(user1));
+        assertEquals("User was not added", true, library.addUser(user2));
+
+        assertEquals("Book was not Loaned", true, library.loanBookTo(book1,user1));
+        assertEquals("Book was not Loaned", true, library.loanBookTo(book2,user2));
+
+        assertEquals("Book was not Registered", true, library.registerInterest(book2,user1));
+
+        assertEquals("Book was not Loaned", true, library.loanBookTo(book3,user1));
+
+    }
 }

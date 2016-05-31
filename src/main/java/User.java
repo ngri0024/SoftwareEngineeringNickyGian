@@ -62,9 +62,6 @@ public class User implements Observer{
         return booksLoaned;
     }*/
 
-    public int getInterestedSize(){
-        return interestedBooks.size();
-    }
     /* First the book is found in the list of books. */
     public boolean addBooksLoaned(Book newBook) {
         if(booksLoaned.size()<3){
