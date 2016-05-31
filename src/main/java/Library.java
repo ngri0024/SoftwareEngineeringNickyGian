@@ -85,7 +85,8 @@ public class Library {
             if (userId == u.getID()) {
                 if(u.removeBooksLoaned(toReturn)){
                    loanToNextInterested(toReturn);//tries to loan the book to the next Interested User
-                   return true;
+
+                    return true;
                 }else{
                     return false;
                 }
@@ -147,5 +148,4 @@ public class Library {
         }
         return true;
     }
-
 }

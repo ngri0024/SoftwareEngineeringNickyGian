@@ -62,6 +62,9 @@ public class User implements Observer{
         return booksLoaned;
     }*/
 
+    public int getInterestedSize(){
+        return interestedBooks.size();
+    }
     /* First the book is found in the list of books. */
     public boolean addBooksLoaned(Book newBook) {
         if(booksLoaned.size()<3){
@@ -72,6 +75,14 @@ public class User implements Observer{
             }
             newBook.setCurrentUserID(ID); //sets book's current userID
             booksLoaned.add(newBook); //adds book to user's list.
+            for(Pair p : interestedBooks){
+                if(p.getBook().getBookID() == newBook.getBookID()){
+                    interestedBooks.remove(p);
+                    p.getBook().detach(this);
+                    p.getBook().notifyObservers();
+                    break;
+                }
+            }
             newBook.setDaysLoaned(0); //sets the book's days loaned to 0.
             return true;
         }
