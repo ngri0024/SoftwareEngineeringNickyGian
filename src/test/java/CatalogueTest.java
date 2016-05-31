@@ -240,8 +240,42 @@ public class CatalogueTest {
 
         assertEquals("Lists do not match", titleBooks,
                 catalogue.searchByFilter(filter));
+
+        filter = filter.getChild(0);
+
+        titleBooks.remove(book5); //remo
+        titleBooks.add(book4); //added missing book
+        titleBooks.add(book5); //added missing book
+
+        //filter is null therefore all books should be returned
+        assertEquals("Lists do not match", titleBooks,
+                catalogue.searchByFilter(filter));
+
     }
 
+    @Test //testing getChild()
+    public void nullFilterTest() throws Exception {//tests for case sensitivity
+        titleBooks.add(book1);
+        titleBooks.add(book2);
+        titleBooks.add(book3);
+        titleBooks.add(book4);
+        titleBooks.add(book5);
+
+
+        assertEquals("Book was not added", true, catalogue.addBook(book1));
+        assertEquals("Book was not added", true, catalogue.addBook(book2));
+        assertEquals("Book was not added", true, catalogue.addBook(book3));
+        assertEquals("Book was not added", true, catalogue.addBook(book4));
+        assertEquals("Book was not added", true, catalogue.addBook(book5));
+
+        filter = new CompositeFilter();
+        filter = filter.getChild(0);
+
+        //filter is null therefore all books should be returned
+        assertEquals("Lists do not match", titleBooks,
+                catalogue.searchByFilter(filter));
+
+    }
 
     @Test //search by year and name
     public void searchNameYopGenreTest() throws Exception {//tests for case sensitivity

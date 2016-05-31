@@ -45,7 +45,7 @@ public class Catalogue {
     //using Composite Design pattern
     public List<Book> searchByFilter(Filter filter){
         if(filter==null){
-            return null;
+            return books;
         }
 
         return filter.search(books);
