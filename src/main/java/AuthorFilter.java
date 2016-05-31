@@ -3,7 +3,7 @@ import java.util.List;
 
 public class AuthorFilter extends Filter{
 
-    private String author;
+    private String author;//the author or a substring of the author
 
     public AuthorFilter(String author){
         this.author = author.toLowerCase();//removed case sensitivity

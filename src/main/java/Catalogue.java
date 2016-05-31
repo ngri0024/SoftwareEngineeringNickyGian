@@ -5,21 +5,20 @@ import java.util.List;
 public class Catalogue {
     private List<Book> books;
 
-    //for singleton design patter
+    //for Singleton Design Pattern
     private static Catalogue catalogue=null;
     public static Catalogue getCatalogue(){
-        if(catalogue==null){
+        if(catalogue==null){//creates a new instance
             catalogue=new Catalogue();
         }
-        return catalogue;
+        return catalogue;//always returns catalogue
     }
 
     public Catalogue resetInstance(){//created since catalogue uses a singleton design pattern and
-        //must be removed for JunitTests to work as expected
+        //must be removed for Junit Tests to work as expected
         catalogue=null;
         return null;
     }
-
 
     //set as private since only one instance should be made
     private Catalogue() {
