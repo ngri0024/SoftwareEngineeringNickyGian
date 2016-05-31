@@ -86,4 +86,31 @@ public class Library {
         }
     return false;
     }
+
+    public boolean registerInterest(Book book, User user){
+        int loanId = book.getBookID();
+        int userId = user.getID();
+        boolean userInSystem=false;
+        for(User u:users) {
+            if (u.getID() == userId) {//the user must exist in the library
+                userInSystem = true;
+                user=u;//changing reference
+                break;
+            }
+        }
+
+        if(userInSystem) {
+            for (Book b: catalogue.getAllBooks()) {
+                if (b.getBookID() == loanId) {//to match the book
+                    if (b.getDaysLoaned() == -1) {//can be loaned
+                        return false;
+                    } else {//is already loaned
+                        b.attach(user);
+                        return true;
+                    }
+                }
+            }
+        }
+        return false;
+    }
 }

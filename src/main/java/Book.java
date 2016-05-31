@@ -1,4 +1,4 @@
-public class Book {
+public class Book implements Subject{
     private int bookID;
     private String title;
     private String author;
@@ -70,6 +70,21 @@ public class Book {
 
     public int getYearPublished(){
         return yearPublished;
+    }
+
+    @Override
+    public void attach(Observer observer) {
+
+    }
+
+    @Override
+    public void detach(Observer observer) {
+
+    }
+
+    @Override
+    public void notifyObservers() {
+
     }
 
     /*public void setYearPublished(int yearPublished){

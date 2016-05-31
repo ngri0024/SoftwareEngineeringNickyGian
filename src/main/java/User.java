@@ -2,7 +2,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class User {
+public class User implements Observer{
     private int ID;
     private  String name;
     private String surname;
@@ -88,4 +88,8 @@ public class User {
        return false;
     }
 
+    @Override
+    public void update() {
+
+    }
 }
