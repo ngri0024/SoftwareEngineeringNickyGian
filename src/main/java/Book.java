@@ -78,7 +78,7 @@ public class Book implements Subject{
     }
 
     @Override
-    public void attach(Observer observer) {
+    public void attach(Observer observer){
         interestedClients.add(observer);
     }
 
@@ -89,8 +89,10 @@ public class Book implements Subject{
 
     @Override
     public void notifyObservers() {
+            int position=1;
             for(Observer observer: interestedClients){
-                observer.update();
+                observer.update(bookID,position);
+                position++;
             }
     }
 

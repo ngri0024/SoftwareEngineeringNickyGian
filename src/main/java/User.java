@@ -1,3 +1,5 @@
+
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -7,12 +9,14 @@ public class User implements Observer{
     private  String name;
     private String surname;
     private List<Book> booksLoaned;
+    private List<Pair> interestedBooks;
 
     public User(int ID, String name, String surname) throws UserException{
         if(!setID(ID)) throw new UserException("Id cannot be smaller than 0");
         if(!setName(name)) throw new UserException("Name cammpt be empty");
         if(!setSurname(surname)) throw new UserException("Surname cannot be empty");
         this.booksLoaned = new ArrayList<Book>();
+        this.interestedBooks = new ArrayList<Pair>();
     }
 
     public int getID() {
@@ -89,7 +93,12 @@ public class User implements Observer{
     }
 
     @Override
-    public void update() {
+    public void update(int bookID, int position){
+        for(Pair pair: interestedBooks){
+            if(pair.getBook().getBookID()==bookID){
+                pair.setPosition(position);
+            }
+        }
 
     }
 }
