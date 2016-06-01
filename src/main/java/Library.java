@@ -87,6 +87,8 @@ public class Library {
                 if(u.removeBooksLoaned(toReturn)){
                    loanToNextInterested(toReturn);//tries to loan the book to the next Interested User
                     return true;
+                }else{
+                    return false;
                 }
             }
         }

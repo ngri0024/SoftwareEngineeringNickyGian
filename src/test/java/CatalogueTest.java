@@ -28,7 +28,7 @@ public class CatalogueTest {
 
 
     @Before
-    public void setUp() throws Exception {
+    public void setUp() {
 
         catalogue= Catalogue.getCatalogue();
         fiction = new Genre("Fiction", "This book is about a wizard");
@@ -42,7 +42,7 @@ public class CatalogueTest {
     }
 
     @After
-    public void tearDown() throws Exception {
+    public void tearDown(){
         filter = null;
         filter1 = null;
         filter2 = null;
@@ -60,25 +60,25 @@ public class CatalogueTest {
     }
 
     @Test
-    public void addOneBookTest() throws Exception {//a book is added, this should return true
+    public void addOneBookTest(){//a book is added, this should return true
         assertEquals("Book was not added", true, catalogue.addBook(book1));
     }
 
     @Test
-    public void addDuplicateBookTest() throws Exception {//a book is added, a duplcate book is not added false
+    public void addDuplicateBookTest(){//a book is added, a duplcate book is not added false
         assertEquals("Book was not added", true, catalogue.addBook(book1));
         assertEquals("Book with the same ID was added", false, catalogue.addBook(book1));
     }
 
     @Test
-    public void addDifferentBookTest() throws Exception {//a book is added, another book is added both retun true
+    public void addDifferentBookTest(){//a book is added, another book is added both retun true
         assertEquals("Book was not added", true, catalogue.addBook(book1));
         assertEquals("Book was not added", true, catalogue.addBook(book2));
     }
 
 
     @Test
-    public void getAllBooksTest() throws Exception {//this is for a getter so not really useful
+    public void getAllBooksTest(){//this is for a getter so not really useful
         titleBooks.add(book1);
         titleBooks.add(book2);
         titleBooks.add(book3);
@@ -92,14 +92,14 @@ public class CatalogueTest {
     }
 
     @Test
-    public void getAddFromTOChildTest() throws Exception {//this is for a getter so not really useful
+    public void getAddFromTOChildTest() {//this is for a getter so not really useful
         filter = new TitleFilter("Harry");
         assertEquals("Child Filter Added", false, filter.addFilter(new TitleFilter("Harry") ));
         assertEquals("Child Filter Removed", false, filter.removeFilter(new TitleFilter("Harry") ));
 
     }
     @Test
-    public void searchSubTitleTest() throws Exception {//test for substring
+    public void searchSubTitleTest() {//test for substring
         titleBooks.add(book1);
         titleBooks.add(book2);
 
@@ -113,7 +113,7 @@ public class CatalogueTest {
     }
 
     @Test
-    public void searchCapTitleTest() throws Exception {//tests for case sensitivity
+    public void searchCapTitleTest() {//tests for case sensitivity
         titleBooks.add(book1);
         titleBooks.add(book2);
 
@@ -128,7 +128,7 @@ public class CatalogueTest {
 
 
     @Test
-    public void searchAuthorTest() throws Exception {//test for substring
+    public void searchAuthorTest() {//test for substring
         titleBooks.add(book1);
         titleBooks.add(book2);
 
@@ -142,7 +142,7 @@ public class CatalogueTest {
 
 
     @Test
-    public void searchGenreTest() throws Exception {//tests for case sensitivity
+    public void searchGenreTest() {//tests for case sensitivity
         titleBooks.add(book1);
         titleBooks.add(book2);
         titleBooks.add(book3);
@@ -160,7 +160,7 @@ public class CatalogueTest {
 
 
     @Test
-    public void searchYopTest() throws Exception {//tests for case sensitivity
+    public void searchYopTest(){//tests for case sensitivity
         titleBooks.add(book1);
         titleBooks.add(book2);
         titleBooks.add(book3);
@@ -179,7 +179,7 @@ public class CatalogueTest {
 
 
     @Test //search by year and name
-    public void searchNameYopTest() throws Exception {//tests for case sensitivity
+    public void searchNameYopTest(){//tests for case sensitivity
         titleBooks.add(book1);
         titleBooks.add(book2);
 
@@ -201,7 +201,7 @@ public class CatalogueTest {
     }
 
     @Test //testing remove
-    public void removeFilterTest() throws Exception {//tests for case sensitivity
+    public void removeFilterTest(){//tests for case sensitivity
         titleBooks.add(book1);
         titleBooks.add(book2);
         titleBooks.add(book3);
@@ -226,7 +226,7 @@ public class CatalogueTest {
     }
 
     @Test //testing getChild()
-    public void getChildFilterTest() throws Exception {//tests for case sensitivity
+    public void getChildFilterTest(){//tests for case sensitivity
         titleBooks.add(book1);
         titleBooks.add(book2);
         titleBooks.add(book3);
@@ -262,7 +262,7 @@ public class CatalogueTest {
     }
 
     @Test //testing getChild()
-    public void nullFilterTest() throws Exception {//tests for case sensitivity
+    public void nullFilterTest(){//tests for case sensitivity
         titleBooks.add(book1);
         titleBooks.add(book2);
         titleBooks.add(book3);
@@ -286,7 +286,7 @@ public class CatalogueTest {
     }
 
     @Test //search by year and name
-    public void searchNameYopGenreTest() throws Exception {//tests for case sensitivity
+    public void searchNameYopGenreTest(){//tests for case sensitivity
 
         titleBooks.add(book5);
 

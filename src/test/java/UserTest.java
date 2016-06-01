@@ -9,7 +9,6 @@ import static org.junit.Assert.assertEquals;
 
 public class UserTest {
     private User user;//created as userTest class variables
-    private User badUser;
     private Book book;
     private Book book2;
     private Book book3;
@@ -30,7 +29,7 @@ public class UserTest {
     }
 
     @After
-    public void tearDown() throws Exception {
+    public void tearDown(){
         book = null;
         book2 = null;
         book3 = null;
@@ -41,31 +40,33 @@ public class UserTest {
     }
     @Test(expected=UserException.class)
     public void badID() throws Exception {//a negative id is used
-        badUser=new User(-2,"Nicky","Griscti");
+        user=new User(-2,"Nicky","Griscti");
     }
+
     @Test(expected=UserException.class)
     public void badName() throws Exception {//no name was given
-        badUser=new User(2,"  ","Griscti");
+        user=new User(2,"  ","Griscti");
     }
 
     @Test(expected=UserException.class)
     public void badSurname() throws Exception {//no surname was given
-        badUser=new User(2,"Nicky","   ");
+        user=new User(2,"Nicky","   ");
     }
+
     @Test
-    public void addBooksLoaned() throws Exception {//a book is added, this should return true
+    public void addBooksLoaned(){//a book is added, this should return true
         assertEquals("Book was not added", true, user.addBooksLoaned(book));
     }
 
     @Test
-    public void addMaxBooksLoaned() throws Exception {//three books added successfully
+    public void addMaxBooksLoaned(){//three books added successfully
         assertEquals("Book was not added", true, user.addBooksLoaned(book));
         assertEquals("Book was not added", true, user.addBooksLoaned(book2));
         assertEquals("Book was not added", true, user.addBooksLoaned(book3));
     }
 
     @Test
-    public void addAboveMaxBooksLoaned() throws Exception {//4th books not added successfully
+    public void addAboveMaxBooksLoaned() {//4th books not added successfully
         assertEquals("Book was not added", true, user.addBooksLoaned(book));
         assertEquals("Book was not added", true, user.addBooksLoaned(book2));
         assertEquals("Book was not added", true, user.addBooksLoaned(book3));
@@ -73,7 +74,7 @@ public class UserTest {
     }
 
     @Test
-    public void addOnOverdueLoaned() throws Exception {//4th books not added successfully
+    public void addOnOverdueLoaned() {//4th books not added successfully
         assertEquals("Book was not added", true, user.addBooksLoaned(book));
         assertEquals("Book was not added", true, user.addBooksLoaned(book2));
         book2.setDaysLoaned(30);
@@ -81,18 +82,18 @@ public class UserTest {
     }
 
     @Test
-    public void removeEmptyBooksLoaned() throws Exception {//no books are present, therefore this should return false
-        assertEquals("Book was not removed because it was not in the list", false, user.removeBooksLoaned(book));
+    public void removeEmptyBooksLoaned(){//no books are present, therefore this should return false
+        assertEquals("Book was removed but was not in the list", false, user.removeBooksLoaned(book));
     }
 
     @Test
-    public void removeValidBooksTest() throws Exception {//no books are present, therefore this should return false
+    public void removeValidBooksTest(){//no books are present, therefore this should return false
         assertEquals("Book was not added", true, user.addBooksLoaned(book));
         assertEquals("Book was not removed", true, user.removeBooksLoaned(book));
     }
 
     @Test
-    public void removeInvalidBooksTest() throws Exception {//book to remove does not exist
+    public void removeInvalidBooksTest(){//book to remove does not exist
         assertEquals("Book was not added", true, user.addBooksLoaned(book));
         assertEquals("Book was removed", false, user.removeBooksLoaned(book2));
     }

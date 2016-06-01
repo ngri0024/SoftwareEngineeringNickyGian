@@ -39,7 +39,7 @@ public class LibraryTest {
     }
 
     @After
-    public void tearDown() throws Exception {
+    public void tearDown(){
         library = library.destroyLibrary();
         user1 = null;
         user2 = null;
@@ -54,37 +54,37 @@ public class LibraryTest {
     }
 
     @Test
-    public void addOneUserTest() throws Exception {//a single User is added to the library
+    public void addOneUserTest(){//a single User is added to the library
         assertEquals("User was not added", true, library.addUser(user1));
     }
 
     @Test
-    public void addDuplicateUserTest() throws Exception {//a user with the same ID cannot be added
+    public void addDuplicateUserTest(){//a user with the same ID cannot be added
         assertEquals("User was not added", true, library.addUser(user1));
         assertEquals("User with the same ID was added", false, library.addUser(user1));
     }
 
     @Test
-    public void addDifferentUserTest() throws Exception {//two users are added successfully
+    public void addDifferentUserTest(){//two users are added successfully
         assertEquals("User was not added", true, library.addUser(user1));
         assertEquals("User was not added", true, library.addUser(user2));
     }
 
     @Test
-    public void removeValidUserTest() throws Exception {
+    public void removeValidUserTest(){
         assertEquals("User was not added", true, library.addUser(user1));
         assertEquals("User was not deleted", true, library.removeUser(user1));
     }
 
     @Test
-    public void removeInvalidUserTest() throws Exception {
+    public void removeInvalidUserTest(){
         assertEquals("User was not added", true, library.addUser(user1));
-        assertEquals("User was not deleted", false, library.removeUser(user2));
+        assertEquals("User was deleted", false, library.removeUser(user2));
     }
 
 
     @Test
-    public void notFoundLoanTest() throws Exception {
+    public void notFoundLoanTest(){
         assertEquals("Book was not added", true, library.addBook(book1));
         assertEquals("Book was not added", true, library.addBook(book2));
         assertEquals("Book was not added", true, library.addBook(book3));
@@ -92,7 +92,7 @@ public class LibraryTest {
     }
 
     @Test
-    public void validLoanTest() throws Exception {
+    public void validLoanTest(){
         assertEquals("Book was not added", true, library.addBook(book1));
         assertEquals("Book was not added", true, library.addBook(book2));
         assertEquals("Book was not added", true, library.addBook(book3));
@@ -101,7 +101,7 @@ public class LibraryTest {
     }
 
     @Test
-    public void noUserLoanTest() throws Exception {
+    public void noUserLoanTest(){
         assertEquals("Book was not added", true, library.addBook(book1));
         assertEquals("Book was not added", true, library.addBook(book2));
         assertEquals("Book was not added", true, library.addBook(book3));
@@ -109,7 +109,7 @@ public class LibraryTest {
     }
 
     @Test
-    public void invalidLoanTest() throws Exception {
+    public void invalidLoanTest(){
         assertEquals("Book was not added", true, library.addBook(book1));
         book1.setDaysLoaned(29);
         assertEquals("Book was not added", true, library.addBook(book2));
@@ -117,7 +117,7 @@ public class LibraryTest {
     }
 
     @Test
-    public void loanToUnAuthorisedTest() throws Exception {
+    public void loanToUnAuthorisedTest(){
         assertEquals("Book was not added", true, library.addBook(book1));
         assertEquals("Book was not added", true, library.addBook(book2));
         assertEquals("Book was not added", true, library.addBook(book3));
@@ -126,7 +126,7 @@ public class LibraryTest {
     }
 
     @Test
-    public void loanedToOtherTest() throws Exception {
+    public void loanedToOtherTest(){
         assertEquals("Book was not added", true, library.addBook(book1));
         assertEquals("Book was not added", true, library.addBook(book2));
         assertEquals("Book was not added", true, library.addBook(book3));
@@ -137,15 +137,24 @@ public class LibraryTest {
 
 
     @Test
-    public void returnBookTest() throws Exception {
+    public void returnBookTest(){
         assertEquals("Book was not added", true, library.addBook(book1));
         assertEquals("User was not added", true, library.addUser(user1));
-        assertEquals("Book was Loaned", true, library.loanBookTo(book1,user1));
+        assertEquals("Book was not Loaned", true, library.loanBookTo(book1,user1));
         assertEquals("Book was not returned", true, library.returnBook(book1));
     }
 
     @Test
-    public void InvalidReturnBookTest() throws Exception {
+    public void returnBadBookTest(){
+        assertEquals("Book was not added", true, library.addBook(book1));
+        assertEquals("User was not added", true, library.addUser(user1));
+        assertEquals("Book was Loaned", true, library.loanBookTo(book1,user1));
+        book2= new Book(2000000, "Harry Potter", "J. K. Rowling",  fiction, 1, -1, 2000);
+        assertEquals("Book was Returned", false, library.returnBook(book2));
+    }
+
+    @Test
+    public void InvalidReturnBookTest(){
         assertEquals("Book was not added", true, library.addBook(book1));
         assertEquals("User was not added", true, library.addUser(user1));
         assertEquals("Book was not Loaned", true, library.loanBookTo(book1,user1));
@@ -153,7 +162,7 @@ public class LibraryTest {
     }
 
     @Test
-    public void registerInterestTest() throws Exception {
+    public void registerInterestTest(){
         assertEquals("Book was not added", true, library.addBook(book1));
         assertEquals("Book was not added", true, library.addBook(book2));
 
@@ -170,7 +179,7 @@ public class LibraryTest {
 
 
     @Test
-    public void loanToNextInterestedTest() throws Exception {
+    public void loanToNextInterestedTest(){
         assertEquals("Book was not added", true, library.addBook(book1));
 
         assertEquals("User was not added", true, library.addUser(user1));
@@ -188,7 +197,7 @@ public class LibraryTest {
 
 
     @Test //user has 3 books and next interested book cannot be loaned to user
-    public void loanToNextFullUserTest() throws Exception {
+    public void loanToNextFullUserTest(){
         assertEquals("Book was not added", true, library.addBook(book1));
         assertEquals("Book was not added", true, library.addBook(book2));
         assertEquals("Book was not added", true, library.addBook(book3));
@@ -211,7 +220,7 @@ public class LibraryTest {
     }
 
     @Test //user had 3 books, interested book was not loaned. User then returns a book and tries to loan the book he was interested in.
-    public void loanInterestedBookUserTest() throws Exception {
+    public void loanInterestedBookUserTest(){
         assertEquals("Book was not added", true, library.addBook(book1));
         assertEquals("Book was not added", true, library.addBook(book2));
         assertEquals("Book was not added", true, library.addBook(book3));
@@ -236,7 +245,7 @@ public class LibraryTest {
     }
 
     @Test
-    public void notifyObserservsTest() throws Exception {
+    public void notifyObserservsTest(){
         assertEquals("Book was not added", true, library.addBook(book1));
 
         assertEquals("User was not added", true, library.addUser(user1));
@@ -259,7 +268,7 @@ public class LibraryTest {
     }
 
     @Test
-    public void iterateThroughInterestedBooks() throws Exception {
+    public void iterateThroughInterestedBooks(){
         assertEquals("Book was not added", true, library.addBook(book1));
         assertEquals("Book was not added", true, library.addBook(book2));
         assertEquals("Book was not added", true, library.addBook(book3));

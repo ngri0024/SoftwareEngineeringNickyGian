@@ -12,14 +12,14 @@ public class GenreTest {
     private Genre romance;
 
     @Before
-    public void setUp() throws Exception {
+    public void setUp(){
         fiction = new Genre("Fiction", "This is test1");
         romance = new Genre("Romance", "This is love test");
 
     }
 
     @After
-    public void tearDown() throws Exception {
+    public void tearDown(){
         fiction = null;
     }
 
@@ -29,22 +29,22 @@ public class GenreTest {
     }*/
 
     @Test
-    public void setNameInvalidTest() throws Exception {
+    public void setNameInvalidTest(){
         assertEquals("Genre name could not be empty", false, fiction.setName(""));
     }
 
     @Test
-    public void setNameValidTest() throws Exception {
+    public void setNameValidTest(){
         assertEquals("Genre Name did not change", true, fiction.setName("Comedy"));
     }
 
     @Test
-    public void setDescriptionInvalidTest() throws Exception {
+    public void setDescriptionInvalidTest(){
         assertEquals("Description changed", false, fiction.setDescription(""));
     }
 
     @Test
-    public void setDescriptionValidTest() throws Exception {
+    public void setDescriptionValidTest(){
         assertEquals("Description did not change", true, fiction.setDescription("This is another Description"));
     }
 
